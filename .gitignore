@@ -1,0 +1,27 @@
+# ==== Data / Large files ====
+*.img
+*.iso
+*.zip
+*.7z
+*.tar
+*.gz
+*.rar
+
+# ==== Recovered photos ====
+recup_dir/
+*.jpg
+*.jpeg
+*.png
+*.mov
+*.mp4
+
+# ==== Jupyter ====
+.ipynb_checkpoints/
+
+# ==== Python cache ====
+__pycache__/
+*.pyc
+
+# ==== OS ====
+.DS_Store
+Thumbs.db
