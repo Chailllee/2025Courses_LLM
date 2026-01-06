@@ -25,3 +25,10 @@ __pycache__/
 # ==== OS ====
 .DS_Store
 Thumbs.db
+
+# ==== Sensitive Data ====
+.env
+*.env
+!.env.example
+*_api_key.txt
+*_secret.txt

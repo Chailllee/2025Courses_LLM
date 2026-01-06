@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>guidance</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Guidance_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Guidance_files/libs/quarto-html/quarto.js"></script>
+<script src="Guidance_files/libs/quarto-html/popper.min.js"></script>
+<script src="Guidance_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Guidance_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Guidance_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Guidance_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Guidance_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Guidance_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Guidance_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<p>你这个问题问得<strong>非常清醒、非常成熟</strong>。我先给你一个结论，然后再拆解成「<strong>怎么 1 个月高效学完</strong>」「<strong>哪些是必须掌握的</strong>」「<strong>哪些可以轻学/跳过</strong>」「<strong>你这种 AI 小白 + 会在 VSCode 卡住的人，最省力的学法</strong>」。</p>
+<hr>
+<section id="一句话结论先给你定心丸" class="level2">
+<h2 class="anchored" data-anchor-id="一句话结论先给你定心丸">一句话结论（先给你定心丸）</h2>
+<p>👉 <strong>你不需要“搞清楚每一个流程的底层代码”</strong> 👉 <strong>你需要的是：能做出 2–3 个“可讲清楚逻辑的 AI 应用 demo”</strong> 👉 <strong>一个月内完全可行，但必须“以应用为中心，而不是以课程目录为中心”</strong></p>
+<p>你现在的目标 <strong>不是成为大模型工程师</strong>，而是：</p>
+<blockquote class="blockquote">
+<p><strong>“我懂大模型应用的完整流程，知道怎么选技术、怎么拼模块、怎么落地一个业务场景。”</strong></p>
+</blockquote>
+<p>这和课程目录里“每一节都精通”是<strong>两回事</strong>。</p>
+<hr>
+</section>
+<section id="一这门课的真实结构不是表面-29-节" class="level2">
+<h2 class="anchored" data-anchor-id="一这门课的真实结构不是表面-29-节">一、这门课的“真实结构”（不是表面 29 节）</h2>
+<p>这 29 节课，实际上可以被压缩成 <strong>4 大模块</strong>：</p>
+<section id="模块-a认知与工具不难但必须有" class="level3">
+<h3 class="anchored" data-anchor-id="模块-a认知与工具不难但必须有">🔹 模块 A：认知与工具（不难，但必须有）</h3>
+<ul>
+<li>2 AI 大模型基本原理</li>
+<li>3 Prompt 工程</li>
+<li>4 Cursor 编程</li>
+<li>19 分析式 AI 基础</li>
+</ul>
+<p>👉 <strong>目标</strong>：</p>
+<blockquote class="blockquote">
+<p>知道大模型“能干什么、不能干什么”， 会用 AI 写代码，不自己硬写。</p>
+</blockquote>
+<hr>
+</section>
+<section id="模块-b大模型应用的核心骨架最重要" class="level3">
+<h3 class="anchored" data-anchor-id="模块-b大模型应用的核心骨架最重要">🔹 模块 B：大模型应用的核心骨架（⭐最重要）</h3>
+<ul>
+<li>6 Embeddings 和向量数据库</li>
+<li>7 RAG 技术</li>
+<li>8 RAG 高级技术</li>
+<li>10 LangChain</li>
+<li>11 Function Calling</li>
+<li>13 Agent 智能体</li>
+</ul>
+<p>👉 <strong>这是整门课的“心脏”</strong> 👉 也是你以后在简历 / 面试里最值钱的部分</p>
+<hr>
+</section>
+<section id="模块-c典型应用场景选择性掌握" class="level3">
+<h3 class="anchored" data-anchor-id="模块-c典型应用场景选择性掌握">🔹 模块 C：典型应用场景（选择性掌握）</h3>
+<ul>
+<li>9 Text2SQL</li>
+<li>14 视觉大模型</li>
+<li>16–18 Coze / Dify</li>
+<li>25 交互式 BI</li>
+<li>26 AI 运营助手</li>
+<li>27 AI 搜索类应用</li>
+</ul>
+<p>👉 这些是<strong>“应用外壳”</strong> 👉 不需要全会，但要会 <strong>2–3 个典型</strong></p>
+<hr>
+</section>
+<section id="模块-d偏算法-偏竞赛可轻学甚至跳过" class="level3">
+<h3 class="anchored" data-anchor-id="模块-d偏算法-偏竞赛可轻学甚至跳过">🔹 模块 D：偏算法 / 偏竞赛（可轻学甚至跳过）</h3>
+<ul>
+<li>15 Fine-tuning</li>
+<li>20 不同领域算法</li>
+<li>21 机器学习神器</li>
+<li>22–23 时间序列 &amp; 大赛</li>
+</ul>
+<p>👉 <strong>一个月内不建议深挖</strong> 👉 了解“能做什么”即可</p>
+<hr>
+</section>
+</section>
+<section id="二一个月高效率学习路线给你真可执行版" class="level2">
+<h2 class="anchored" data-anchor-id="二一个月高效率学习路线给你真可执行版">二、一个月高效率学习路线（给你“真·可执行版”）</h2>
+<section id="总原则非常重要" class="level3">
+<h3 class="anchored" data-anchor-id="总原则非常重要">📅 总原则（非常重要）</h3>
+<ul>
+<li>❌ 不追求“每一节都完全懂”</li>
+<li>❌ 不在 VSCode 里死磕</li>
+<li>✅ <strong>“能跑起来 &gt; 看懂代码 &gt; 理解底层”</strong></li>
+<li>✅ 每周一个「可对外展示的成果」</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="week-1建立不会崩溃的认知框架不写复杂代码" class="level2">
+<h2 class="anchored" data-anchor-id="week-1建立不会崩溃的认知框架不写复杂代码">Week 1：建立“不会崩溃的认知框架”（不写复杂代码）</h2>
+<p><strong>重点课：</strong></p>
+<ul>
+<li>2 AI 大模型基本原理</li>
+<li>3 Prompt 工程</li>
+<li>4 Cursor 编程</li>
+<li>19 分析式 AI 基础</li>
+</ul>
+<p><strong>你这一周的目标是：</strong></p>
+<ul>
+<li>知道 LLM 是什么、为什么会 hallucinate</li>
+<li>会写 <strong>结构化 Prompt</strong></li>
+<li>用 Cursor 让 AI 帮你写代码（你不手写）</li>
+</ul>
+<p><strong>做到这 3 件事就够了：</strong></p>
+<ol type="1">
+<li>用 Prompt 做一个「角色 + 任务 + 约束」的例子</li>
+<li>用 Cursor 跑一个简单 Python / Web demo（复制为主）</li>
+<li>能说清楚：Prompt / Model / Output 的关系</li>
+</ol>
+<p>👉 <strong>这一周不要碰 RAG，不要碰 Agent</strong></p>
+<hr>
+</section>
+<section id="week-2死磕rag这是你最该会的" class="level2">
+<h2 class="anchored" data-anchor-id="week-2死磕rag这是你最该会的">Week 2：死磕「RAG」——这是你最该会的</h2>
+<p><strong>重点课（反复看）：</strong></p>
+<ul>
+<li>6 Embeddings 和向量数据库 ⭐⭐⭐</li>
+<li>7 RAG 技术 ⭐⭐⭐</li>
+<li>8 RAG 高级技术 ⭐⭐</li>
+<li>10 LangChain（了解即可）</li>
+</ul>
+<section id="你这一周的唯一目标" class="level3">
+<h3 class="anchored" data-anchor-id="你这一周的唯一目标">你这一周的<strong>唯一目标</strong>：</h3>
+<blockquote class="blockquote">
+<p><strong>能讲清楚 RAG 是什么 + 能跑一个 RAG demo</strong></p>
+</blockquote>
+<p>你不需要理解：</p>
+<ul>
+<li>向量数学推导</li>
+<li>FAISS 内部结构</li>
+</ul>
+<p>你必须理解：</p>
+<ul>
+<li>为什么不用直接问大模型</li>
+<li>文档 → chunk → embedding → retrieve → LLM</li>
+<li>RAG 解决了什么问题（幻觉 / 知识更新）</li>
+</ul>
+<p><strong>成果要求（非常关键）：</strong></p>
+<ul>
+<li><p>一个「企业知识库 / 课程问答 / 文档问答」demo</p></li>
+<li><p>能用一句话解释：</p>
+<blockquote class="blockquote">
+<p>“这是一个基于 RAG 的问答系统，用向量检索降低 hallucination。”</p>
+</blockquote></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="week-3选-2-个高性价比应用方向" class="level2">
+<h2 class="anchored" data-anchor-id="week-3选-2-个高性价比应用方向">Week 3：选 2 个“高性价比应用方向”</h2>
+<p>从下面 <strong>选 2 个就够了</strong>：</p>
+<section id="强烈推荐与你背景最匹配" class="level3">
+<h3 class="anchored" data-anchor-id="强烈推荐与你背景最匹配">⭐ 强烈推荐（与你背景最匹配）</h3>
+<ul>
+<li>9 Text2SQL（你是数据分析向）</li>
+<li>25 交互式 BI 报表</li>
+<li>26 AI 运营助手</li>
+</ul>
+</section>
+<section id="次优先了解即可" class="level3">
+<h3 class="anchored" data-anchor-id="次优先了解即可">次优先（了解即可）</h3>
+<ul>
+<li>14 视觉大模型</li>
+<li>27 AI 搜索</li>
+</ul>
+<p><strong>你不需要：</strong></p>
+<ul>
+<li>写完整后端</li>
+<li>部署生产级系统</li>
+</ul>
+<p><strong>你需要：</strong></p>
+<ul>
+<li>一个「业务问题 → AI 方案 → 技术组合」的完整逻辑</li>
+</ul>
+<p>例子（面试级别）：</p>
+<blockquote class="blockquote">
+<p>“我做了一个 Text2SQL + BI 的分析助手，用户用自然语言问问题，系统自动生成 SQL 并可视化结果。”</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="week-4agent-整理-对外表达" class="level2">
+<h2 class="anchored" data-anchor-id="week-4agent-整理-对外表达">Week 4：Agent + 整理 + 对外表达</h2>
+<p><strong>重点课：</strong></p>
+<ul>
+<li>11 Function Calling</li>
+<li>13 Agent 智能体</li>
+<li>16–18 Coze / Dify（选一个）</li>
+</ul>
+<p><strong>这一周你要做的不是“学新东西”，而是：</strong></p>
+<ul>
+<li>把你会的东西 <strong>串成一套说辞</strong></li>
+<li>准备简历 / 项目描述 / 面试表达</li>
+</ul>
+<p><strong>你至少要准备 3 句话：</strong></p>
+<ol type="1">
+<li>什么是你最熟的 AI 应用？</li>
+<li>你用了哪些关键技术？（RAG / Agent / Text2SQL）</li>
+<li>你解决了什么真实问题？</li>
+</ol>
+<hr>
+</section>
+<section id="三哪些是必须掌握-可以轻学-可以跳过" class="level2">
+<h2 class="anchored" data-anchor-id="三哪些是必须掌握-可以轻学-可以跳过">三、哪些是“必须掌握 / 可以轻学 / 可以跳过”</h2>
+<section id="必须掌握否则这门课白上" class="level3">
+<h3 class="anchored" data-anchor-id="必须掌握否则这门课白上">✅ 必须掌握（否则这门课白上）</h3>
+<ul>
+<li>Prompt 工程</li>
+<li>Embeddings + RAG</li>
+<li>一个完整应用 demo（哪怕很简单）</li>
+</ul>
+</section>
+<section id="掌握思路即可" class="level3">
+<h3 class="anchored" data-anchor-id="掌握思路即可">🟡 掌握思路即可</h3>
+<ul>
+<li>LangChain</li>
+<li>Function Calling</li>
+<li>Agent 架构</li>
+</ul>
+</section>
+<section id="一个月内不必深学" class="level3">
+<h3 class="anchored" data-anchor-id="一个月内不必深学">❌ 一个月内不必深学</h3>
+<ul>
+<li>Fine-tuning</li>
+<li>时间序列大赛</li>
+<li>各种算法细节</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="四针对你vscode-会卡很久的专属建议很重要" class="level2">
+<h2 class="anchored" data-anchor-id="四针对你vscode-会卡很久的专属建议很重要">四、针对你“VSCode 会卡很久”的专属建议（很重要）</h2>
+<p>你<strong>千万不要</strong>：</p>
+<ul>
+<li>从空文件开始写</li>
+<li>自己 debug 半天</li>
+</ul>
+<p>你应该：</p>
+<ul>
+<li>只做 <strong>三件事</strong> 1️⃣ 复制 2️⃣ 跑通 3️⃣ 改一点点</li>
+</ul>
+<p><strong>你的优势不是“代码熟练”，而是：</strong></p>
+<ul>
+<li>懂业务</li>
+<li>懂数据</li>
+<li>懂怎么把 AI 用在真实问题上</li>
+</ul>
+<p>👉 <strong>这正是“AI 应用开发”最值钱的能力</strong></p>
+<hr>
+</section>
+<section id="最后一句实话很重要" class="level2">
+<h2 class="anchored" data-anchor-id="最后一句实话很重要">最后一句实话（很重要）</h2>
+<blockquote class="blockquote">
+<p><strong>如果你每一节都想“完全搞懂”，你会直接累垮。</strong> <strong>如果你以“能讲清楚一个完整 AI 应用”为目标，一个月完全够。</strong></p>
+</blockquote>
+<p>如果你愿意，下一步我可以直接帮你：</p>
+<ul>
+<li>给你 <strong>“一页学习清单（每天干什么）”</strong></li>
+<li>或者帮你 <strong>选 2 个最适合你背景的 demo 方向</strong></li>
+<li>或者直接帮你 <strong>设计一个“简历级 AI 项目”</strong></li>
+</ul>
+<p>你想从哪一步开始？</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
