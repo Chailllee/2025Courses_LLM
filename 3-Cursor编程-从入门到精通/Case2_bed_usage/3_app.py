@@ -55,20 +55,26 @@ def get_file_md5(filepath):
         logger.error(f"计算MD5异常: {e}")
         return ""
 
-# 检查Excel文件是否更新
+# 检查Excel文件是否更新（仅在修改时间变化时才计算MD5，避免频繁整文件读取）
 def is_excel_updated():
     """检查Excel文件是否有更新"""
     try:
-        # 获取当前文件修改时间和MD5
         current_mtime = os.path.getmtime(EXCEL_FILE)
+
+        # 如果修改时间未变，直接认为未更新，避免每次都计算MD5
+        if current_mtime == _cache['excel_last_modified']:
+            return False
+
+        # 修改时间变了才计算MD5，进一步确认是否真正更新
         current_md5 = get_file_md5(EXCEL_FILE)
-        
-        # 如果修改时间或MD5与缓存不同，则文件已更新
-        if (current_mtime != _cache['excel_last_modified'] or 
-            current_md5 != _cache['excel_md5']):
+        if current_md5 != _cache['excel_md5']:
             _cache['excel_last_modified'] = current_mtime
             _cache['excel_md5'] = current_md5
             return True
+
+        # 修改时间变但内容未变，更新时间戳/MD5缓存后认为未更新
+        _cache['excel_last_modified'] = current_mtime
+        _cache['excel_md5'] = current_md5
         return False
     except Exception as e:
         logger.error(f"检查文件更新异常: {e}")
