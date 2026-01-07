@@ -139,12 +139,16 @@ def load_cache_from_file():
                 # 更新全局缓存
                 _cache.update(cache_data)
                 
-                if all(key in _cache and _cache[key] is not None for key in 
-                      ['hospital_usage', 'department_usage', 'heatmap_data', 'summary_data']):
+                # 检查所有必需数据是否都已加载
+                all_ready = all(_cache.get(key) is not None for key in 
+                               ['hospital_usage', 'department_usage', 'heatmap_data', 'summary_data'])
+                if all_ready:
                     _cache['ready'] = True
-                    
-                logger.info(f"从文件加载缓存成功，数据时间戳: {datetime.fromtimestamp(_cache['timestamp']).strftime('%Y-%m-%d %H:%M:%S')}")
-                return True
+                    logger.info(f"从文件加载缓存成功，数据时间戳: {datetime.fromtimestamp(_cache['timestamp']).strftime('%Y-%m-%d %H:%M:%S')}")
+                    return True
+                else:
+                    logger.warning(f"缓存数据不完整: hospital={_cache.get('hospital_usage') is not None}, dept={_cache.get('department_usage') is not None}, heatmap={_cache.get('heatmap_data') is not None}, summary={_cache.get('summary_data') is not None}")
+                    return False
         return False
     except Exception as e:
         logger.error(f"加载缓存异常: {e}")
@@ -391,8 +395,8 @@ def index():
     # 只检查是否有缓存，如无则启动异步预计算
     if not _cache['ready']:
         # 先尝试从文件加载缓存
-        if not load_cache_from_file() or not _cache['ready']:
-            # 如果加载失败或缓存不完整，启动异步预计算
+        if not load_cache_from_file():
+            # 如果加载失败，启动异步预计算
             async_precompute()
     
     return render_template('index.html', ready=_cache['ready'])
