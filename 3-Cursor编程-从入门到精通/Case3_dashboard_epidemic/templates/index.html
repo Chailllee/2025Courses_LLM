@@ -14,15 +14,17 @@
         
         body {
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
+            height: auto;
             background-color: #0f1c3a;
             color: #fff;
-            overflow: hidden;
+            overflow: auto;
         }
         
         .dashboard-container {
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
+            height: auto;
             padding: 15px;
             display: flex;
             flex-direction: column;
@@ -82,7 +84,7 @@
             grid-template-columns: 1.1fr 0.9fr;
             gap: 15px;
             margin-top: 15px;
-            height: calc(100vh - 180px);
+            height: auto;
         }
         
         /* 左侧地图 */
@@ -92,6 +94,7 @@
             padding: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             height: 100%;
+            min-height: 420px;
             overflow: hidden;
         }
         
@@ -109,6 +112,7 @@
             padding: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             flex: 1;
+            min-height: 260px;
         }
         
         .chart-title {
@@ -120,7 +124,36 @@
         
         .chart {
             width: 100%;
-            height: calc(100% - 30px);
+            height: 230px;
+        }
+
+        /* 让地图填满容器，提升占比 */
+        #hk-map {
+            height: 100%;
+            min-height: 390px;
+        }
+
+        .trends-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .risk-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .risk-warning {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            min-height: 260px;
+            overflow-y: auto;
         }
         
         /* 颜色定制 */
@@ -237,6 +270,10 @@
                 initHongKongMap(regionData);
                 initDailyTotalChart(dailyData);
                 initAreaComparisonChart(regionData);
+                initGrowthRateChart(dailyData);
+                initActiveCasesChart(dailyData);
+                initRiskLevelPie(summaryData);
+                renderHighRiskAreas(regionData);
                 
                 // 绑定窗口大小变化事件
                 window.addEventListener('resize', function() {
@@ -260,12 +297,38 @@
                     const chartDom = document.getElementById('hk-map');
                     const myChart = echarts.init(chartDom);
                     charts.push(myChart);
+
+                    const totalCases = (regionData.total_cases || []).map(v => Number.isFinite(v) ? v : 0);
+                    const maxVal = totalCases.length ? Math.max(...totalCases) : 0;
+
+                    // nameMap: geojson 英文名 -> 中文地区名（与数据集保持一致）
+                    const nameMap = {
+                        'Central and Western': '中西区',
+                        'Eastern': '东区',
+                        'Southern': '南区',
+                        'Wan Chai': '湾仔区',
+                        'Sham Shui Po': '深水埗区',
+                        'Kowloon City': '九龙城区',
+                        'Kwun Tong': '观塘区',
+                        'Wong Tai Sin': '黄大仙区',
+                        'Yau Tsim Mong': '油尖旺区',
+                        'Islands': '离岛区',
+                        'Kwai Tsing': '葵青区',
+                        'North': '北区',
+                        'Sai Kung': '西贡区',
+                        'Sha Tin': '沙田区',
+                        'Tai Po': '大埔区',
+                        'Tsuen Wan': '荃湾区',
+                        'Tuen Mun': '屯门区',
+                        'Yuen Long': '元朗区'
+                    };
+                    const nameMapReverse = Object.fromEntries(Object.entries(nameMap).map(([en, zh]) => [zh, en]));
                     
                     // 定义数据和视觉映射
                     const data = regionData.regions.map((name, index) => {
                         return {
                             name: name,
-                            value: regionData.total_cases[index]
+                            value: totalCases[index] || 0
                         };
                     });
                     
@@ -273,7 +336,7 @@
                         visualMap: {
                             left: 'right',
                             min: 0,
-                            max: Math.max(...regionData.total_cases),
+                            max: maxVal || 1,
                             inRange: {
                                 color: ['#85e69a', '#7dd2fa', '#ffc77d', '#ff9a61', '#ea5d5c']
                             },
@@ -287,6 +350,7 @@
                             name: '确诊病例',
                             type: 'map',
                             map: 'hongkong',
+                            nameMap,
                             roam: false,
                             label: {
                                 show: true,
@@ -306,7 +370,17 @@
                         }],
                         tooltip: {
                             trigger: 'item',
-                            formatter: '{b}<br/>确诊病例: {c}'
+                            formatter: function(params) {
+                                const zhName = nameMap[params.name] || params.name;
+                                const idx = regionData.regions.indexOf(zhName);
+                                if (idx === -1) return `${zhName}<br/>无数据`;
+                                const tc = totalCases[idx] || 0;
+                                const nc = regionData.new_cases ? regionData.new_cases[idx] : 0;
+                                const ac = regionData.active_cases ? regionData.active_cases[idx] : 0;
+                                const per = regionData.per_100k ? Number(regionData.per_100k[idx] || 0).toFixed(1) : 0;
+                                const risk = regionData.risk_levels ? regionData.risk_levels[idx] : '';
+                                return `${zhName}<br/>累计确诊: ${tc}<br/>新增: ${nc}<br/>现存: ${ac}<br/>每10万人: ${per}<br/>风险: ${risk}`;
+                            }
                         }
                     };
                     
@@ -403,6 +477,101 @@
             };
             
             myChart.setOption(option);
+        }
+
+        // 确诊病例增长率
+        function initGrowthRateChart(data) {
+            const chartDom = document.getElementById('growth-rate-chart');
+            const myChart = echarts.init(chartDom);
+            charts.push(myChart);
+
+            const option = {
+                tooltip: { trigger: 'axis' },
+                grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+                xAxis: { type: 'category', data: data.dates, axisLabel: { color: '#eee', rotate: 45 } },
+                yAxis: { type: 'value', axisLabel: { color: '#eee' }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.1)' } } },
+                series: [{
+                    name: '增长率%',
+                    type: 'line',
+                    smooth: true,
+                    data: data.growth_rate,
+                    color: '#fac858'
+                }]
+            };
+
+            myChart.setOption(option);
+        }
+
+        // 活跃病例趋势
+        function initActiveCasesChart(data) {
+            const chartDom = document.getElementById('active-cases-chart');
+            const myChart = echarts.init(chartDom);
+            charts.push(myChart);
+
+            const option = {
+                tooltip: { trigger: 'axis' },
+                grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+                xAxis: { type: 'category', data: data.dates, axisLabel: { color: '#eee', rotate: 45 } },
+                yAxis: { type: 'value', axisLabel: { color: '#eee' }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.1)' } } },
+                series: [{
+                    name: '活跃病例',
+                    type: 'line',
+                    smooth: true,
+                    areaStyle: { color: 'rgba(84,112,198,0.25)' },
+                    data: data.active_cases,
+                    color: '#5470c6'
+                }]
+            };
+
+            myChart.setOption(option);
+        }
+
+        // 风险等级分布饼图
+        function initRiskLevelPie(summaryData) {
+            const chartDom = document.getElementById('risk-level-pie');
+            const myChart = echarts.init(chartDom);
+            charts.push(myChart);
+
+            const entries = Object.entries(summaryData.risk_levels || {});
+            const pieData = entries.map(([name, value]) => ({ name, value }));
+
+            const option = {
+                tooltip: { trigger: 'item' },
+                legend: { bottom: 0, textStyle: { color: '#eee' } },
+                series: [{
+                    name: '风险等级',
+                    type: 'pie',
+                    radius: ['35%', '65%'],
+                    label: { color: '#eee' },
+                    data: pieData
+                }]
+            };
+
+            myChart.setOption(option);
+        }
+
+        // 高风险区域列表
+        function renderHighRiskAreas(regionData) {
+            const container = document.getElementById('high-risk-areas');
+            if (!regionData || !regionData.regions) return;
+
+            const items = regionData.regions
+                .map((name, idx) => ({
+                    name,
+                    risk: regionData.risk_levels ? regionData.risk_levels[idx] : '',
+                    cases: regionData.total_cases[idx]
+                }))
+                .filter(item => String(item.risk).includes('高'))
+                .sort((a, b) => b.cases - a.cases);
+
+            if (!items.length) {
+                container.innerHTML = '<div style="color:#7eb6ff">当前无高风险区域</div>';
+                return;
+            }
+
+            container.innerHTML = items.map(item => {
+                return `<div style="margin:6px 0;color:#ff9a61;">${item.name}：${item.cases} 例 (${item.risk})</div>`;
+            }).join('');
         }
         
         // 初始化各区域确诊病例对比图表

@@ -80,6 +80,12 @@ def prepare_region_data(df):
         '人口': 'first',
         '风险等级': 'first'
     }).reset_index()
+
+    # 空值补 0 / 默认等级，避免前端出现 NaN
+    region_summary['风险等级'] = region_summary['风险等级'].fillna('未知')
+    region_summary[['新增确诊', '累计确诊', '现存确诊', '人口']] = (
+        region_summary[['新增确诊', '累计确诊', '现存确诊', '人口']].fillna(0)
+    )
     
     # 计算每10万人口的确诊病例数
     region_summary['每10万人口确诊数'] = (region_summary['累计确诊'] / region_summary['人口']) * 100000
