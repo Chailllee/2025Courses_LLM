@@ -2,6 +2,10 @@
 
 这是一个用于实时监控香港医院病床使用情况的可视化大屏系统。
 
+<div align="center">
+	<img src="../case_img/case2.gif" alt="Case2 Bed Usage Dashboard" width="720" />
+</div>
+
 ## 功能特点
 
 - **占用率展示**：显示各医院及科室的病床使用率

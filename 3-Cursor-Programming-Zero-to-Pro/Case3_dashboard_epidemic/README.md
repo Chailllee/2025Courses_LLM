@@ -2,6 +2,10 @@
 
 基于Flask和ECharts的香港疫情可视化监控大屏，实时展示疫情数据和趋势分析。
 
+<div align="center">
+	<img src="../case_img/case3.gif" alt="Case3 Epidemic Dashboard" width="720" />
+</div>
+
 ## 功能特点
 
 - **核心指标展示**：今日新增确诊、累计确诊总数、当前活跃病例、累计康复人数、累计死亡人数

@@ -6,10 +6,10 @@
       "type": "shell",
       "command": "python",
       "args": [
-        "${workspaceFolder}/3-Cursor编程-从入门到精通/Case2_bed_usage/3_app.py"
+        "${workspaceFolder}/3-Cursor-Programming-Zero-to-Pro/Case2_bed_usage/3_app.py"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/3-Cursor编程-从入门到精通/Case2_bed_usage"
+        "cwd": "${workspaceFolder}/3-Cursor-Programming-Zero-to-Pro/Case2_bed_usage"
       },
       "isBackground": true,
       "problemMatcher": []
@@ -36,10 +36,10 @@
       "type": "shell",
       "command": "python",
       "args": [
-        "${workspaceFolder}/3-Cursor编程-从入门到精通/Case3_dashboard_epidemic/app.py"
+        "${workspaceFolder}/3-Cursor-Programming-Zero-to-Pro/Case3_dashboard_epidemic/app.py"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/3-Cursor编程-从入门到精通/Case3_dashboard_epidemic"
+        "cwd": "${workspaceFolder}/3-Cursor-Programming-Zero-to-Pro/Case3_dashboard_epidemic"
       },
       "isBackground": true,
       "problemMatcher": []
